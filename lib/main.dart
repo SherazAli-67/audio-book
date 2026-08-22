@@ -1,4 +1,5 @@
 import 'package:audio_book/constants/string_const.dart';
+import 'package:audio_book/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: StringConst.appTitle,
       theme: ThemeData(
         brightness: .light,
         scaffoldBackgroundColor: Colors.white
       ),
-      home: Scaffold(body: SafeArea(child: Center(child: Text("AudioBook app"),)),)
+      routerConfig: router,
+      builder: (ctx, child) => child!,
     );
   }
 }
