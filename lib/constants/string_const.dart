@@ -1,4 +1,4 @@
 class StringConst {
   static const appTitle = 'AudioBook';
-  static const appFontFamily = 'Urbanist';
+  static const appFontFamily = 'Albra';
 }
