@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(body: SafeArea(child: Center(child: Text("AudioBook app"),)),)
