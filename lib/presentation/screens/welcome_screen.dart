@@ -2,7 +2,11 @@ import 'package:audio_book/constants/string_const.dart';
 import 'package:audio_book/core/app_colors.dart';
 import 'package:audio_book/core/app_icons.dart';
 import 'package:audio_book/core/app_textstyles.dart';
+import 'package:audio_book/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../widgets/primary_btn.dart';
 
 class WelcomeScreen extends StatelessWidget{
   const WelcomeScreen({super.key});
@@ -10,6 +14,7 @@ class WelcomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Padding(
         padding: const .only(top: 73.0),
         child: Column(
@@ -33,7 +38,7 @@ class WelcomeScreen extends StatelessWidget{
             Container(
               width: .infinity,
               margin: .symmetric(horizontal: 20, vertical: 45),
-              child: ElevatedButton(onPressed: (){}, child: Text("Next", style: AppTextStyles.btnTextStyle,), style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryColor, padding: .symmetric(vertical: 19.5)),),
+              child: PrimaryBtn(btnText: "Next", onTap: ()=> context.push(NamedRoutes.home.routeName),),
             )
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:audio_book/constants/string_const.dart';
+import 'package:audio_book/core/app_colors.dart';
 import 'package:audio_book/router/app_router.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: StringConst.appTitle,
       theme: ThemeData(
         brightness: .dark,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: AppColors.scaffoldBgColor,
         fontFamily: StringConst.appFontFamily
       ),
       routerConfig: router,
