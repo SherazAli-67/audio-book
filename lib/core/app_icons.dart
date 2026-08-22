@@ -5,7 +5,10 @@ class AppIcons {
   static const icSearch ='${iconsPath}ic_search.svg';
   static const icBookmark ='${iconsPath}ic_bookmark.svg';
   static const icProfile ='${iconsPath}ic_profile.svg';
+  static const icNotifications ='${iconsPath}ic_notifications.svg';
 
 
   static const welcomeImg = '${iconsPath}welcome_screen_img.png';
+
+  static const devProfileImg = '${iconsPath}dev.jpeg';
 }

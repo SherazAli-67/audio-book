@@ -1,3 +1,4 @@
+import 'package:audio_book/presentation/screens/home_screen.dart';
 import 'package:audio_book/presentation/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -5,13 +6,13 @@ import 'package:go_router/go_router.dart';
 import '../presentation/screens/main_menu_page.dart';
 
 GoRouter router = GoRouter(
-  initialLocation: NamedRoutes.welcome.routeName,
+  initialLocation: NamedRoutes.home.routeName,
   routes: [
     GoRoute(path: NamedRoutes.welcome.routeName, builder: (_, state)=> WelcomeScreen()),
     StatefulShellRoute.indexedStack(
         branches: [
           StatefulShellBranch(routes: [
-            GoRoute(path: NamedRoutes.home.routeName, builder: (_, _)=> Center(child: Text("Home"),))
+            GoRoute(path: NamedRoutes.home.routeName, builder: (_, _)=> HomeScreen())
           ]),
           StatefulShellBranch(routes: [
             GoRoute(path: NamedRoutes.search.routeName, builder: (_, _)=> Center(child: Text("Search"),))
