@@ -1,7 +1,8 @@
 import 'package:audio_book/core/models/audio_book_model.dart';
-import 'package:audio_book/presentation/screens/audio_book_detail_screen.dart';
+import 'package:audio_book/presentation/screens/audio_book_detail/audio_book_detail_screen.dart';
 import 'package:audio_book/presentation/screens/home_screen.dart';
 import 'package:audio_book/presentation/screens/welcome_screen.dart';
+import 'package:audio_book/providers/audio_book_detail_provider.dart';
 import 'package:audio_book/providers/home_provider/home_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +34,10 @@ GoRouter router = GoRouter(
 
         ],
         builder: (ctx, state, navigationShell) => MainMenuPage(navigationShell: navigationShell)),
-    GoRoute(path: NamedRoutes.audioBookDetail.routeName, builder: (_, state)=> AudioBookDetailScreen(audioBook: state.extra as AudioBookModel,)),
+    GoRoute(path: NamedRoutes.audioBookDetail.routeName, builder: (_, state)=> ChangeNotifierProvider(
+      create: (_)=> AudioBookDetailProvider(),
+      builder: (_, _)=> AudioBookDetailScreen(audioBook: state.extra as AudioBookModel,)
+    )),
 
   ],
 );
