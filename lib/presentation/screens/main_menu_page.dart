@@ -11,7 +11,7 @@ class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(child: Stack(
+        body: Stack(
           children: [
             navigationShell,
             Positioned(
@@ -20,10 +20,11 @@ class MainMenuPage extends StatelessWidget {
               left: 15,
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: .circular(99),
-                  color: Colors.black
+                    borderRadius: .circular(99),
+                    color: Colors.black
                 ),
                 padding: .all(8),
+                margin: .only(bottom: 46),
                 child: Row(
                   children: [
                     _buildBottomNavigationBarItemWidget(context, icon: AppIcons.icHome, index: 0),
@@ -35,7 +36,7 @@ class MainMenuPage extends StatelessWidget {
               ),
             )
           ],
-        ))
+        )
     );
   }
 

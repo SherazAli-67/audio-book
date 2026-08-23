@@ -9,6 +9,7 @@ class AppIcons {
 
 
   static const welcomeImg = '${iconsPath}welcome_screen_img.png';
+  static const coverImg = '${iconsPath}cover_img.png';
 
   static const devProfileImg = '${iconsPath}dev.jpeg';
 }

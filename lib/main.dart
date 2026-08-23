@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: StringConst.appTitle,
       theme: ThemeData(
-        brightness: .dark,
+        brightness: .light,
         scaffoldBackgroundColor: AppColors.scaffoldBgColor,
         fontFamily: StringConst.appFontFamily
       ),
