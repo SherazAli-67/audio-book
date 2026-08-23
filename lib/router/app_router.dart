@@ -1,8 +1,10 @@
 import 'package:audio_book/presentation/screens/audio_book_detail_screen.dart';
 import 'package:audio_book/presentation/screens/home_screen.dart';
 import 'package:audio_book/presentation/screens/welcome_screen.dart';
+import 'package:audio_book/providers/home_provider/home_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../presentation/screens/main_menu_page.dart';
 
@@ -13,7 +15,10 @@ GoRouter router = GoRouter(
     StatefulShellRoute.indexedStack(
         branches: [
           StatefulShellBranch(routes: [
-            GoRoute(path: NamedRoutes.home.routeName, builder: (_, _)=> HomeScreen())
+            GoRoute(path: NamedRoutes.home.routeName, builder: (_, _)=> ChangeNotifierProvider(
+              create: (_)=> HomeProvider(),
+              builder: (_, _)=> HomeScreen()
+            ))
           ]),
           StatefulShellBranch(routes: [
             GoRoute(path: NamedRoutes.search.routeName, builder: (_, _)=> Center(child: Text("Search"),))
