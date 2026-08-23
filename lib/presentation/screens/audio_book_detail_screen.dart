@@ -82,14 +82,14 @@ class AudioBookDetailScreen extends StatelessWidget {
                     children: [
                       _buildAudioBookMetaDataWidget(icon: Icons.star_rate_rounded, title: "4.5"),
                       _buildAudioBookMetaDataWidget(icon: Icons.language, title: "English"),
-                      _buildAudioBookMetaDataWidget(icon: Icons.mic, title: "2 hrs"),
+                      _buildAudioBookMetaDataWidget(icon: Icons.mic, title: audioBook.time),
                     ],
                   ),
                   Column(
                     spacing: 8,
                     children: [
-                      Text("Moby Dick", style: AppTextStyles.subHeadingTextStyle,),
-                      Text("Herman Melville", style: AppTextStyles.regularTextStyle.copyWith(fontSize: 16),)
+                      Text(audioBook.bookName, style: AppTextStyles.subHeadingTextStyle,),
+                      Text(audioBook.author, style: AppTextStyles.regularTextStyle.copyWith(fontSize: 16),)
                     ],
                   )
                 ],
