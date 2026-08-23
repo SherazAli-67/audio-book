@@ -30,6 +30,8 @@ class HomeProvider extends ChangeNotifier{
      dramaBooks = result[0];
      historyBooks = result[1];
 
+     List<String> dramaBookIDs = dramaBooks.map((book)=> book.bookID).toList();
+     historyBooks.removeWhere((book) => dramaBookIDs.contains(book.bookID));
     }catch(e){
       error = e.toString();
     }finally{

@@ -12,6 +12,7 @@ class BooksService {
   }
 
   CollectionReference get _booksColRef => FirebaseFirestore.instance.collection(FirebaseConst.booksCollection);
+
   Future<List<AudioBookModel>> fetchBooksByCategory({required String category})async{
     try{
      final querySnap = await _booksColRef.where('categories', arrayContains: category).limit(10).get();
@@ -20,4 +21,5 @@ class BooksService {
       throw Exception(e.toString());
     }
   }
+
 }

@@ -2,13 +2,14 @@ import 'package:audio_book/constants/lottie_const.dart';
 import 'package:audio_book/core/app_colors.dart';
 import 'package:audio_book/core/app_icons.dart';
 import 'package:audio_book/core/app_textstyles.dart';
+import 'package:audio_book/core/models/audio_book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 
 class AudioBookDetailScreen extends StatelessWidget {
-  const AudioBookDetailScreen({super.key});
-
+  const AudioBookDetailScreen({super.key, required this.audioBook});
+  final AudioBookModel audioBook;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -23,7 +24,7 @@ class AudioBookDetailScreen extends StatelessWidget {
                 mainAxisAlignment: .spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.pop(context),
                     icon: Icon(Icons.arrow_back, color: Colors.white),
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.black,
@@ -60,10 +61,13 @@ class AudioBookDetailScreen extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 60,
-                      child: ClipRRect(
-                        borderRadius: .circular(12),
-                        child: Image.asset(AppIcons.coverImg, fit: .cover, height: size.height*0.22,),
+                      top: 40,
+                      child: Hero(
+                        tag: audioBook.bookName,
+                        child: ClipRRect(
+                            borderRadius: .circular(12),
+                            child: Image.network(audioBook.image, fit: .cover, height: size.height*0.25,)
+                          ),
                       ),
                     )
                   ],

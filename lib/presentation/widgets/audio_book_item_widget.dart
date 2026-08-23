@@ -5,19 +5,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 class AudioBookItemWidget extends StatelessWidget{
-  const AudioBookItemWidget({super.key, required this.audioBook});
+  const AudioBookItemWidget({super.key, required this.audioBook,});
   final AudioBookModel audioBook;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> context.push(NamedRoutes.audioBookDetail.routeName),
+      onTap: ()=> context.push(NamedRoutes.audioBookDetail.routeName, extra: audioBook),
       child: Column(
         crossAxisAlignment: .start,
         spacing: 14,
         children: [
           Expanded(child: ClipRRect(
             borderRadius: .circular(12),
-            child: Image.network(audioBook.image, fit: .cover,),
+            child: Hero(
+                tag: audioBook.bookName,
+                child: Image.network(audioBook.image, fit: .cover,)),
           )),
           Column(
             crossAxisAlignment: .start,
