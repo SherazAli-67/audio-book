@@ -3,8 +3,10 @@ import 'package:audio_book/core/app_colors.dart';
 import 'package:audio_book/core/app_icons.dart';
 import 'package:audio_book/core/app_textstyles.dart';
 import 'package:audio_book/presentation/widgets/audio_book_item_widget.dart';
+import 'package:audio_book/providers/home_provider/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/app_data.dart';
 
@@ -88,9 +90,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              Expanded(child: ListView.separated(
-                  scrollDirection: .horizontal,
-                  itemBuilder: (ctx, index)=> AudioBookItemWidget(), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: 10))
+              Expanded(child: Padding(
+                padding: const .only(left: 16.0),
+                child: Consumer<HomeProvider>(
+                  builder: (_, provider, _) {
+                    return ListView.separated(
+                        scrollDirection: .horizontal,
+                        itemBuilder: (ctx, index)=> AudioBookItemWidget(audioBook: provider.dramaBooks[index],), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: provider.dramaBooks.length);
+                  }
+                ),
+              ))
             ],
           ),
         ),
@@ -109,9 +118,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              Expanded(child: ListView.separated(
-                  scrollDirection: .horizontal,
-                  itemBuilder: (ctx, index)=> AudioBookItemWidget(), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: 10))
+              Expanded(child: Padding(
+                padding: const .only(left: 16.0),
+                child:  Consumer<HomeProvider>(
+                    builder: (_, provider, _) {
+                      return ListView.separated(
+                          scrollDirection: .horizontal,
+                          itemBuilder: (ctx, index)=> AudioBookItemWidget(audioBook: provider.historyBooks[index],), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: provider.historyBooks.length);
+                    }
+                ),
+              ))
             ],
           ),
         ),

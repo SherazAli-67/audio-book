@@ -1,12 +1,12 @@
-import 'package:audio_book/core/app_icons.dart';
 import 'package:audio_book/core/app_textstyles.dart';
+import 'package:audio_book/core/models/audio_book_model.dart';
 import 'package:audio_book/router/app_router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
 class AudioBookItemWidget extends StatelessWidget{
-  const AudioBookItemWidget({super.key});
-
+  const AudioBookItemWidget({super.key, required this.audioBook});
+  final AudioBookModel audioBook;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,13 +17,13 @@ class AudioBookItemWidget extends StatelessWidget{
         children: [
           Expanded(child: ClipRRect(
             borderRadius: .circular(12),
-            child: Image.asset(AppIcons.coverImg, fit: .cover,),
+            child: Image.network(audioBook.image, fit: .cover,),
           )),
           Column(
             crossAxisAlignment: .start,
             children: [
-              Text("Mobby Dick", style: AppTextStyles.regularTextStyle.copyWith(fontSize: 16, fontWeight: .w500),),
-              Text("Jeff Vandermer", style: AppTextStyles.regularTextStyle,)
+              Text(audioBook.bookName, style: AppTextStyles.regularTextStyle.copyWith(fontSize: 16, fontWeight: .w500),),
+              Text(audioBook.author, style: AppTextStyles.regularTextStyle,)
             ],
           )
         ],
