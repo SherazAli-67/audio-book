@@ -9,9 +9,7 @@ class HomeProvider extends ChangeNotifier{
   List<AudioBookModel> historyBooks = [];
 
   String? error;
-
   final _audioBooksService = BooksService.instance;
-
 
   HomeProvider(){
     _initBooks();
@@ -24,13 +22,14 @@ class HomeProvider extends ChangeNotifier{
     try{
       final result =  await Future.wait(
         [
-          _audioBooksService.fetchBooksByCategory(category: 'Drama'),
+          _audioBooksService.fetchBooksByCategory(category: 'Entrepreneurship'),
           _audioBooksService.fetchBooksByCategory(category: 'History'),
         ]
       );
 
      dramaBooks = result[0];
      historyBooks = result[1];
+
     }catch(e){
       error = e.toString();
     }finally{

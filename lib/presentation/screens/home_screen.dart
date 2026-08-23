@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
-    return SingleChildScrollView(padding: .only( top: 56), child: Column(
+    return Padding(padding: .only( top: 56), child: Column(
       crossAxisAlignment: .start,
       spacing: 24,
       children: [
@@ -67,71 +67,76 @@ class _HomeScreenState extends State<HomeScreen> {
             )),
           ],
         ),),
-        Container(
-          margin: .only(left: 16),
-          height: 47,
-          width: .infinity,
-          child: ListView.separated(
-              scrollDirection: .horizontal,
-              itemBuilder: (ctx, index)=> _buildCategoryItemWidget(category: AppData.categories[index], isSelected: _selectedIndex == index, onTap: ()=> _onTabChangeTap(index)), separatorBuilder: (ctx, index) => const SizedBox(width: 10,), itemCount: AppData.categories.length),
-        ),
-        SizedBox(
-          height: size.height*0.35,
-          child: Column(
-            spacing: 14,
-            children: [
-              Padding(
-                padding: const .symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Text("Drama", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 18),),
-                    Text("See all", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.primaryColor),)
-                  ],
-                ),
+        Expanded(child: SingleChildScrollView(child: Column(
+          spacing: 24,
+          crossAxisAlignment: .start,
+          children: [
+            Container(
+              margin: .only(left: 16),
+              height: 47,
+              width: .infinity,
+              child: ListView.separated(
+                  scrollDirection: .horizontal,
+                  itemBuilder: (ctx, index)=> _buildCategoryItemWidget(category: AppData.categories[index], isSelected: _selectedIndex == index, onTap: ()=> _onTabChangeTap(index)), separatorBuilder: (ctx, index) => const SizedBox(width: 10,), itemCount: AppData.categories.length),
+            ),
+            SizedBox(
+              height: size.height*0.35,
+              child: Column(
+                spacing: 14,
+                children: [
+                  Padding(
+                    padding: const .symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: .spaceBetween,
+                      children: [
+                        Text("Entrepreneurship", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 18),),
+                        Text("See all", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.primaryColor),)
+                      ],
+                    ),
+                  ),
+                  Expanded(child: Padding(
+                    padding: const .only(left: 16.0),
+                    child: Consumer<HomeProvider>(
+                        builder: (_, provider, _) {
+                          return ListView.separated(
+                              scrollDirection: .horizontal,
+                              itemBuilder: (ctx, index)=> AudioBookItemWidget(audioBook: provider.dramaBooks[index],), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: provider.dramaBooks.length);
+                        }
+                    ),
+                  ))
+                ],
               ),
-              Expanded(child: Padding(
-                padding: const .only(left: 16.0),
-                child: Consumer<HomeProvider>(
-                  builder: (_, provider, _) {
-                    return ListView.separated(
-                        scrollDirection: .horizontal,
-                        itemBuilder: (ctx, index)=> AudioBookItemWidget(audioBook: provider.dramaBooks[index],), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: provider.dramaBooks.length);
-                  }
-                ),
-              ))
-            ],
-          ),
-        ),
-        SizedBox(
-          height: size.height*0.35,
-          child: Column(
-            spacing: 14,
-            children: [
-              Padding(
-                padding: const .symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Text("Detective", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 18),),
-                    Text("See all", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.primaryColor),)
-                  ],
-                ),
+            ),
+            SizedBox(
+              height: size.height*0.35,
+              child: Column(
+                spacing: 14,
+                children: [
+                  Padding(
+                    padding: const .symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: .spaceBetween,
+                      children: [
+                        Text("History", style: AppTextStyles.subHeadingTextStyle.copyWith(fontSize: 18),),
+                        Text("See all", style: AppTextStyles.regularTextStyle.copyWith(color: AppColors.primaryColor),)
+                      ],
+                    ),
+                  ),
+                  Expanded(child: Padding(
+                    padding: const .only(left: 16.0),
+                    child:  Consumer<HomeProvider>(
+                        builder: (_, provider, _) {
+                          return ListView.separated(
+                              scrollDirection: .horizontal,
+                              itemBuilder: (ctx, index)=> AudioBookItemWidget(audioBook: provider.historyBooks[index],), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: provider.historyBooks.length);
+                        }
+                    ),
+                  ))
+                ],
               ),
-              Expanded(child: Padding(
-                padding: const .only(left: 16.0),
-                child:  Consumer<HomeProvider>(
-                    builder: (_, provider, _) {
-                      return ListView.separated(
-                          scrollDirection: .horizontal,
-                          itemBuilder: (ctx, index)=> AudioBookItemWidget(audioBook: provider.historyBooks[index],), separatorBuilder: (_, _)=> const SizedBox(width: 18,), itemCount: provider.historyBooks.length);
-                    }
-                ),
-              ))
-            ],
-          ),
-        ),
-
+            ),
+          ],
+        ),))
       ],
     ),);
   }
