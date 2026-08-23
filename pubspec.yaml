@@ -37,6 +37,8 @@ dependencies:
   go_router: ^17.5.0
   flutter_svg: ^2.3.0
   lottie: ^3.5.1
+  firebase_core: ^4.13.0
+  cloud_firestore: ^6.8.0
 
 dev_dependencies:
   flutter_test:

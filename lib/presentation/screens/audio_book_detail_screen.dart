@@ -118,7 +118,7 @@ class AudioBookDetailScreen extends StatelessWidget {
 
   Widget _buildActionButton({required String icon, VoidCallback? onTap}) => Expanded(child: IconButton(onPressed: onTap ?? (){}, icon: SvgPicture.asset(icon),));
 
-  Row _buildAudioBookMetaDataWidget({required IconData icon, required String title}) {
+  Widget _buildAudioBookMetaDataWidget({required IconData icon, required String title}) {
     return Row(
       spacing: 4,
       children: [
