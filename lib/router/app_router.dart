@@ -1,3 +1,4 @@
+import 'package:audio_book/presentation/screens/audio_book_detail_screen.dart';
 import 'package:audio_book/presentation/screens/home_screen.dart';
 import 'package:audio_book/presentation/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,6 +27,8 @@ GoRouter router = GoRouter(
 
         ],
         builder: (ctx, state, navigationShell) => MainMenuPage(navigationShell: navigationShell)),
+    GoRoute(path: NamedRoutes.audioBookDetail.routeName, builder: (_, state)=> AudioBookDetailScreen()),
+
   ],
 );
 
@@ -34,7 +37,8 @@ enum NamedRoutes {
   home('/home'),
   search('/search'),
   bookmark('/bookmark'),
-  profile('/profile')
+  profile('/profile'),
+  audioBookDetail('/audio-book-detail')
   ;
 
   final String routeName;
