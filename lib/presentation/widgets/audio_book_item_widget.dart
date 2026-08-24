@@ -1,6 +1,7 @@
 import 'package:audio_book/core/app_textstyles.dart';
 import 'package:audio_book/core/models/audio_book_model.dart';
 import 'package:audio_book/router/app_router.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,7 +20,7 @@ class AudioBookItemWidget extends StatelessWidget{
             borderRadius: .circular(12),
             child: Hero(
                 tag: audioBook.bookName,
-                child: Image.network(audioBook.image, fit: .cover,)),
+                child: CachedNetworkImage(imageUrl: audioBook.image, fit: .cover,)),
           )),
           Column(
             crossAxisAlignment: .start,

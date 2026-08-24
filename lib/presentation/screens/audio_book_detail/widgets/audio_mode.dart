@@ -1,4 +1,5 @@
 import 'package:audio_book/core/models/audio_book_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../../../../constants/lottie_const.dart';
@@ -35,7 +36,7 @@ class AudioMode extends StatelessWidget{
                   tag: audioBook.bookName,
                   child: ClipRRect(
                       borderRadius: .circular(12),
-                      child: Image.network(audioBook.image, fit: .cover, height: size.height*0.25,)
+                      child: CachedNetworkImage(imageUrl:audioBook.image, fit: .cover, height: size.height*0.25,)
                   ),
                 ),
               )
