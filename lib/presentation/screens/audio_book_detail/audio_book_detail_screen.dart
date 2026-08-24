@@ -3,9 +3,8 @@ import 'package:audio_book/presentation/screens/audio_book_detail/widgets/audio_
 import 'package:audio_book/presentation/screens/audio_book_detail/widgets/reading_mode.dart';
 import 'package:audio_book/providers/audio_book_detail_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart' show SvgPicture;
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-
 import '../../../core/app_colors.dart';
 import '../../../core/app_icons.dart';
 import '../../../core/app_textstyles.dart';
@@ -72,7 +71,7 @@ class AudioBookDetailScreen extends StatelessWidget {
                   children: [
                     _buildActionButton(icon: AppIcons.icMusic),
                     _buildActionButton(icon: AppIcons.icBackward10s),
-                    IconButton(onPressed: (){}, icon: SvgPicture.asset(AppIcons.icPlay), style: IconButton.styleFrom(backgroundColor: AppColors.primaryColor, padding: .all(15)),),
+                    IconButton(onPressed: ()=> provider.onPlayPauseTap(), icon: SvgPicture.asset( provider.isPlaying ? AppIcons.icPause : AppIcons.icPlay), style: IconButton.styleFrom(backgroundColor: provider.isPlaying ? Colors.white : AppColors.primaryColor, padding: .all(15)),),
                     _buildActionButton(icon: AppIcons.icForward10s),
                     _buildActionButton(icon: AppIcons.icRepeat),
                   ],

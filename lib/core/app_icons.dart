@@ -13,6 +13,14 @@ class AppIcons {
   static const icPause = '${iconsPath}ic_pause.svg';
   static const icRepeat = '${iconsPath}ic_repeat.svg';
 
+  //welcome images
+
+  static const detectiveImg = '${iconsPath}detective_img.png';
+  static const tragedyImg = '${iconsPath}tragedy_img.png';
+  static const novelImg = '${iconsPath}novel_img.png';
+  static const fantasyImg = '${iconsPath}fantasy_img.png';
+  static const historicalImg = '${iconsPath}historical_img.png';
+  static const dramaImg = '${iconsPath}drama_img.png';
 
   static const welcomeImg = '${iconsPath}welcome_screen_img.png';
   static const coverImg = '${iconsPath}cover_img.png';

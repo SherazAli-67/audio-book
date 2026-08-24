@@ -11,27 +11,31 @@ import 'package:provider/provider.dart';
 import '../presentation/screens/main_menu_page.dart';
 
 GoRouter router = GoRouter(
-  initialLocation: NamedRoutes.home.routeName,
+  initialLocation: NamedRoutes.welcome.routeName,
   routes: [
     GoRoute(path: NamedRoutes.welcome.routeName, builder: (_, state)=> WelcomeScreen()),
     StatefulShellRoute.indexedStack(
         branches: [
           StatefulShellBranch(routes: [
-            GoRoute(path: NamedRoutes.home.routeName, builder: (_, _)=> ChangeNotifierProvider(
-              create: (_)=> HomeProvider(),
-              builder: (_, _)=> HomeScreen()
-            ))
+            GoRoute(
+                path: NamedRoutes.home.routeName,
+                builder: (_, _) => ChangeNotifierProvider(create: (_) => HomeProvider(), builder: (_, _) => HomeScreen()))
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: NamedRoutes.search.routeName, builder: (_, _)=> Center(child: Text("Search"),))
+            GoRoute(
+                path: NamedRoutes.search.routeName,
+                builder: (_, _) => Center(child: Text("Search"),))
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: NamedRoutes.bookmark.routeName, builder: (_, _)=> Center(child: Text("Profile Screen"),))
+            GoRoute(
+                path: NamedRoutes.bookmark.routeName,
+                builder: (_, _) => Center(child: Text("Profile Screen"),))
           ]),
           StatefulShellBranch(routes: [
-            GoRoute(path: NamedRoutes.profile.routeName, builder: (_, _)=> Center(child: Text("Profile Screen"),))
+            GoRoute(
+                path: NamedRoutes.profile.routeName,
+                builder: (_, _) => Center(child: Text("Profile Screen"),))
           ]),
-
         ],
         builder: (ctx, state, navigationShell) => MainMenuPage(navigationShell: navigationShell)),
     GoRoute(path: NamedRoutes.audioBookDetail.routeName, builder: (_, state)=> ChangeNotifierProvider(
